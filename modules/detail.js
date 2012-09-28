@@ -12,22 +12,33 @@ define(function(require, exports, module){
         $ = require('$');
 
     var Detail = new Class('Detail',{
-        init : function(){
-            //this._bindAll('refreshAmt');
-            this._super();
-        },
+        key : 'J_detail',
         _apiMap : {
-            //'m1.Module1.changeName' : 'changeName'
+            'detail.Detail.show' : 'show'
+        },
+        show:function(flag){
+            this.load();
+            console.log('show')
+            var node = $(this.getRoot());
+            if(flag) node.removeClass('fn-hide');
+            else node.addClass('fn-hide');
+        },
+        showChannel:function(e){
+            e.preventDefault();
+            var node = $(e.currentTarget),
+                flag = false;
+            if(node.html() == '显示支付渠道') flag = true, node.html('关闭支付渠道');
+            else node.html('显示支付渠道');
+
+            this.deliver({code : 'channel.Channel.show', body : flag});
         },
         registerEvents : function(){
-            // J_text
-            // J_response
-            $('#J_refreshAmt').click(this.refreshAmt);
-            $('#J_loadM2').click(this.load);
-            // J_loadM2
+            this._bindAll('showChannel');
+            $('#J_showChannel').click(this.showChannel);
+            //$('#J_loadM2').click(this.load);
         }
 
     }).inherits(base);
 
-    return new Order;
+    return new Detail;
 });

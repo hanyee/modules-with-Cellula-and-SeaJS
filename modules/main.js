@@ -30,8 +30,7 @@ define(function(require, exports, module){
     */
 
     return function (body) {
-        console.log('here')
-        var modules = ['~/order'];
+        var modules = ['~/order','~/detail','~/channel'];
         var modulesInstance = [];
 
         seajs.use(modules, function () {
@@ -40,17 +39,12 @@ define(function(require, exports, module){
                 modulesInstance.push(m);
                 mc.subscribe(m);
             });
+
+            setTimeout(function(){
+                modulesInstance[0].load();
+            }, 1000)
+
         });
     };
-
-/*
-        $(".module", $(body)).each(function(i, v){
-            seajs.use('~/' + $(v).attr('module'), function(m){
-                console.log(m);
-                modules.push(m);
-                mc.subscribe(m);
-            });
-        });
-        */
 
 });

@@ -6,19 +6,19 @@
  * To change this template use File | Settings | File Templates.
  */
 
-define(function(require, exports, module){
+define(function (require, exports, module) {
     var base = require('ModuleBase'),
         Class = require('cellula').Class,
         $ = require('$');
 
-    var Order = new Class('Order',{
-        key : 'J_order',
-        init : function(){
-            //this._bindAll('refreshAmt');
+    var Order = new Class('Order', {
+        key:'J_order',
+        init:function () {
+            this._bindAll('showDetail');
             this._super();
-            this.load();
+            //this.load();
         },
-        _apiMap : {
+        _apiMap:{
             //'m1.Module1.changeName' : 'changeName'
         },
         refreshAmt:function (e) {
@@ -33,51 +33,18 @@ define(function(require, exports, module){
                 }, 1000);
             }, 1000);
         },
-        isLoaded : function(){
-            return $(this.rootNode).html().trim() !== '';
+        showDetail : function(e){
+            e.preventDefault();
+            var node = $('#J_detailShort'),
+                flag = node.hasClass('fn-hide');
+            if(flag) node.removeClass('fn-hide');
+            else node.addClass('fn-hide');
+
+            this.deliver({code : 'detail.Detail.show', body : !flag});
         },
-        load : function(){
-            console.log('do load');
-
-            var loaded = this.isLoaded(),
-                config = {},
-                configNode = this.getNode('#J_'+'order'+'Config');  //$('#J_'+'order'+'Config');
-console.log(configNode.val);
-            if(configNode.val()){ //sync
-
-            } else { //async
-                config.type = /(async)/.test(configNode.val()) ? 'async' : 'sync';
-
-                // async load dom
-
-                config.url = configNode.val().split(':')[1];
-                console.log(config);
-                /*
-                 $.ajax({
-                 url:'order.html?t=' + new Date().getTime(),
-                 data:'a',
-                 type:'get',
-                 timeout:2000,
-                 dataType:'text',
-                 success:function (r) {
-                 console.log($(r));
-                 }
-                 });
-                 */
-            }
-
-
-
-        },
-        _loaded : function(){
-
-        },
-        registerEvents : function(){
-            // J_text
-            // J_response
+        registerEvents:function () {
             $('#J_refreshAmt').click(this.refreshAmt);
-            $('#J_loadM2').click(this.load);
-            // J_loadM2
+            $('#J_showDetail').click(this.showDetail);
         }
 
     }).inherits(base);
