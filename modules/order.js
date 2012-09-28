@@ -33,10 +33,15 @@ define(function(require, exports, module){
                 }, 1000);
             }, 1000);
         },
+        isLoaded : function(){
+            return $(this.rootNode).html().trim() !== '';
+        },
         load : function(){
-            var config = {},
-                configNode = $('#J_'+'order'+'Config');
-console.log('do load');
+            console.log('do load');
+
+            var loaded = this.isLoaded(),
+                config = {},
+                configNode = this.getNode('#J_'+'order'+'Config');  //$('#J_'+'order'+'Config');
 console.log(configNode.val);
             if(configNode.val()){ //sync
 
