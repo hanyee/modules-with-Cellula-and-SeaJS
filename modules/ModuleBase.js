@@ -34,8 +34,7 @@ define(function (require, exports, module) {
             console.log(loaded);
 
             if (!loaded) { // async load
-                var that = this,
-                    mode = $(this.getRoot()).attr('mode');
+                var mode = $(this.getRoot()).attr('mode');
 
                 $.ajax({
                     url:mode.split(':')[1] + '?t=' + new Date().getTime(),

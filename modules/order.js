@@ -18,9 +18,6 @@ define(function (require, exports, module) {
             this._super();
             //this.load();
         },
-        _apiMap:{
-            //'m1.Module1.changeName' : 'changeName'
-        },
         refreshAmt:function (e) {
             e.preventDefault();
             $('#J_tip').html('正在刷新金额...').show();
