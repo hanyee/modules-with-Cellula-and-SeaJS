@@ -18,6 +18,9 @@ define(function(require, exports, module){
         _apiMap : {},
         deliver : function(){
             this.applyInterface.apply(this, ['deliver'].concat(cellula._util.slice.call(arguments)));
+        },
+        load : function(){
+
         }
 
     }).inherits(cellula.Cell);
