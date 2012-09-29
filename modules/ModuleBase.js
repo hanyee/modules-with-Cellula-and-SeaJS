@@ -11,8 +11,8 @@ define(function (require, exports, module) {
         mc = require('#./message'),
         $ = require('$');
     var ModuleBase = new cellula.Class('ModuleBase', {
-        init:function () {
-            this._super();
+        init:function (cfg) {
+            this._super(cfg);
             this.registerInterface('deliver', mc);
             this.registerEvents();
         },

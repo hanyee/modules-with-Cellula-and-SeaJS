@@ -18,7 +18,6 @@ define(function(require, exports, module){
         },
         show:function(flag){
             this.load();
-            console.log('show')
             var node = $(this.getRoot());
             if(flag) node.removeClass('fn-hide');
             else node.addClass('fn-hide');
@@ -35,7 +34,6 @@ define(function(require, exports, module){
         registerEvents : function(){
             this._bindAll('showChannel');
             $('#J_showChannel').click(this.showChannel);
-            //$('#J_loadM2').click(this.load);
         }
 
     }).inherits(base);

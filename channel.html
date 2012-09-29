@@ -1,38 +1,27 @@
 <div class="tab">
-    <ul id="channelTriggers" class="tab-trigger">
+    <ul id="J_channelTriggers" class="tab-trigger">
         <li class="current">
-            <a href="" target="channelA">渠道A</a>
+            <a href="" target="J_channelA">渠道A</a>
         </li>
         <li class="">
-            <a href="" target="channelB">渠道B</a>
+            <a href="" target="J_channelB">渠道B</a>
         </li>
         <li class="">
-            <a href="" target="channelC">渠道C</a>
+            <a href="" target="J_channelC">渠道C</a>
         </li>
         <li class="">
-            <a href="" target="channelD">渠道D</a>
+            <a href="" target="J_channelD">渠道D</a>
         </li>
     </ul>
-    <div id="channelItems" class="tab-items">
-        <div class="tab-item current" id="channelA">
+    <div id="J_channelItems" class="tab-items">
+      <!--  <div id="J_channelA" mode="async:channelA.html" class="tab-item current"></div> -->
+        <div id="J_channelA" class="tab-item" mode="sync:channelA.html">
             <div>
                 渠道A
             </div>
         </div>
-        <div class="tab-item" id="channelB">
-            <div>
-                渠道B
-            </div>
-        </div>
-        <div class="tab-item" id="channelC">
-            <div>
-                渠道C
-            </div>
-        </div>
-        <div class="tab-item" id="channelD">
-            <div>
-                渠道D
-            </div>
-        </div>
+        <div id="J_channelB" mode="async:channelB.html" class="tab-item"></div>
+        <div id="J_channelC" mode="async:channelC.html" class="tab-item"></div>
+        <div id="J_channelD" mode="async:channelD.html" class="tab-item"></div>
     </div>
 </div>

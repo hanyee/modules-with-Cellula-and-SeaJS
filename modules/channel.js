@@ -8,16 +8,24 @@
 
 define(function (require, exports, module) {
     var base = require('ModuleBase'),
-        Class = require('cellula').Class,
+        cellula = require('cellula'),
         Tab = require('#./tab'),
         $ = require('$');
 
-    var Channel = new Class('Channel', {
+    var a = require('#./channelA'),
+        b = require('#./channelB'),
+        c = require('#./channelC'),
+        d = require('#./channelD');
+
+    var cl = new cellula.Collection({type : base});
+    cl.push(a);
+    cl.push(b);
+    cl.push(c);
+    cl.push(d);
+
+    var Channel = new cellula.Class('Channel', {
         key:'J_channel',
-        init:function () {
-            //this._bindAll('showDetail');
-            this._super();
-        },
+        collection:cl,
         _apiMap:{
             'channel.Channel.show':'show'
         },
@@ -27,15 +35,16 @@ define(function (require, exports, module) {
             if (flag) node.removeClass('fn-hide');
             else node.addClass('fn-hide');
         },
+        changeChannel:function(e){
+            if(e) this.collection.get($(e.currentTarget).attr('target')).load();
+        },
         registerEvents:function () {
-            var t = this.getNode('channelTriggers'),
-                i = this.getNode('channelItems');
-            if (t && i) {
-                console.log('init')
-                var tab = new Tab(t, i, {triggerEvent:"onclick"}).setFocus(0);
-            }
+            this._bindAll('changeChannel');
+            var t = this.getNode('J_channelTriggers'),
+                i = this.getNode('J_channelItems');
+            if (t && i) var tab = new Tab(t, i, {triggerEvent:"onclick"}).setFocus(0);
+            $('#J_channelTriggers').find('a').click(this.changeChannel);
         }
-
     }).inherits(base);
 
     return new Channel;

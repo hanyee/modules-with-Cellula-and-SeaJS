@@ -13,9 +13,9 @@ define(function (require, exports, module) {
 
     var Order = new Class('Order', {
         key:'J_order',
-        init:function () {
+        init:function (cfg) {
             this._bindAll('showDetail');
-            this._super();
+            this._super(cfg);
             //this.load();
         },
         refreshAmt:function (e) {

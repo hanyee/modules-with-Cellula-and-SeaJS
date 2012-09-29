@@ -8,29 +8,12 @@
 
 define(function(require, exports, module){
     var mc = require('#./message'),
-        base = require('ModuleBase'),
-        cellula = require('cellula'),
-        util = cellula._util,
-        Class = cellula.Class,
+        util = require('cellula')._util,
         $ = require('$');
-    /*
-    var Main = new Class('Main', {
-        key:'J_main',
-        init:function () {
-            //this._bindAll('refreshAmt');
-            this._super();
-        },
-        _apiMap:{},
-        loadModules : function (modules) {
-
-        }
-    }).inherits(base);
-
-    return new Main;
-    */
 
     return function (body) {
         var modules = ['~/order','~/detail','~/channel'];
+        //var modules = ['~/order','~/detail','~/channel','~/channelA','~/channelB','~/channelC','~/channelD'];
         var modulesInstance = [];
 
         seajs.use(modules, function () {
@@ -43,7 +26,6 @@ define(function(require, exports, module){
             setTimeout(function(){
                 modulesInstance[0].load();
             }, 1000)
-
         });
     };
 

@@ -3,9 +3,9 @@
     <meta charset="utf-8">
     <title> demo </title>
     <link href="http://dev.assets.alipay.net/al/alice.base-1.0.css" rel="stylesheet" charset="utf-8" media="screen" type="text/css">
-    <script src="./seajs/1.2.1/sea.js" id="seajsnode" charset="utf-8"></script>
+    <script src="seajs/1.2.1/sea.js" id="seajsnode" charset="utf-8"></script>
     <script src="jquery/1.7.2/jquery.js" charset="utf-8"></script>
-    <script src="./cellula/seajs-support/0.3.2/cellula.js" charset="utf-8"></script>
+    <script src="cellula/seajs-support/0.3.2/cellula.js" charset="utf-8"></script>
     <script src="modules/message.js" charset="utf-8"></script>
     <script src="modules/ModuleBase.js" charset="utf-8"></script>
     <script src="modules/main.js" charset="utf-8"></script>
@@ -265,9 +265,7 @@
 
 <body>
 <div id="J_main" class="container">
-
     <!--  <div id="J_order" mode="async:order.html" class="order"></div>  -->
-
     <div id="J_order" mode="sync:order.html" class="order">
         <div class="order-nav">
             您正在使用的是独立担保交易<span class="tip" id="J_tip" style="display: none;"> (当前价格已更新为 100.00 元！)</span>
@@ -309,9 +307,8 @@
 
     <div id="J_channel" mode="async:channel.html" class="channel"></div>
 
-
     <div class="pay-button">
-        <a class="module" href="" target="paySuccessTip">确认支付</a>
+        <a class="module" href="javascript:;" target="paySuccessTip">确认支付</a>
         <div id="paySuccessTip" class="pay-success-tip" style="display: none;">
             <span>您的订单已支付成功！请到已购买的记录当中查看你的商品！</span>
         </div>
@@ -319,15 +316,9 @@
 
 </div>
 
-
-
 <script>
     seajs.use('~/main', function (main) {
         main();
-        //main.loadModules();
     });
 </script>
-
-
-
 </body></html>
